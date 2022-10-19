@@ -1,0 +1,25 @@
+package com.nestdigital.flightbackendapp.controller;
+
+import com.nestdigital.flightbackendapp.dao.FlightDao;
+import com.nestdigital.flightbackendapp.model.FlightModel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+public class FlightController {
+    @Autowired
+    private FlightDao dao;
+    @CrossOrigin(origins = "*")
+    @PostMapping(path="/addflight",consumes = "application/json",produces = "application/json")
+    public String Flight(@RequestBody FlightModel flight){
+        dao.save(flight);
+        return "{status:'success'}";
+    }
+    @CrossOrigin(origins = "*")
+    @GetMapping("/viewflight")
+    public List<FlightModel> viewflight(){
+        return (List<FlightModel>) dao.findAll();
+    }
+}
