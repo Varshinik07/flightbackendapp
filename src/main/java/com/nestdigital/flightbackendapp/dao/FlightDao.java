@@ -11,7 +11,7 @@ public interface FlightDao extends CrudRepository<FlightModel,Integer> {
     @Modifying
     @Query(value = "DELETE FROM `flight` WHERE `id`= :id", nativeQuery = true)
     void deleteById(Integer id);
-@Query(value = "SELECT `id`, `capacity`, `destination`, `flightname`, `origin` FROM `flight` WHERE `flightname`= :flightname",nativeQuery = true)
- List<FlightModel> searchFlight (String flightname);
+@Query(value = "SELECT `id`, `capacity`, `destination`, `flightname`, `origin` FROM `flight` WHERE `capacity`= :capacity",nativeQuery = true)
+ List<FlightModel> searchFlight (String capacity);
 
 }

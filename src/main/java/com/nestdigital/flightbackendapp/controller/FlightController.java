@@ -37,7 +37,7 @@ public class FlightController {
  @CrossOrigin(origins = "*")
     @PostMapping("/serachflight")
     public List<FlightModel> searchflight(@RequestBody FlightModel flight){
-        return (List<FlightModel>) dao.searchFlight(flight.getName());
+        return (List<FlightModel>) dao.searchFlight(flight.getCapacity());
  }
 
 }
